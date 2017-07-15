@@ -1,3 +1,9 @@
+/*
+*   Autor: Lucas Rafael
+*   Email: lucas7844@gmail.com
+*   Data: 14/07/2017.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "mat.c"
