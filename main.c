@@ -1,84 +1,33 @@
-
-/*	
-*	autor: Lucas Rafael Barbosa Lopes
-*	Email: lucas7844@gmail.com
-*	Data: 14 de Julho de 2017.   (14/07/2017)
-*/
 #include <stdio.h>
-#define VALOR_MINIMO 0.000001
+#include <stdlib.h>
+#include "mat.c"
 
-float elevartest(float base, int expo){
-	float resultante;
-	int contador=1;
-		if (base == 0){
-			
-				return 0;
-			
-			}else if((expo == 0) && (base != 0)){
-				
-				return 1;
-				
-					}else if (expo == 1){
-							return base;
+int main()
+{
+    float a, b, c;
+    float x1, x2, delta;
 
-					}else if (expo > 0){
-						resultante = base;
-						do {
-							resultante = resultante * base;
-							contador ++;
-							}while(contador < expo);
-							return resultante;
-					}else if (expo < 0){
-						
-					}
+    printf("Bem-vindos ao LBR.\n");
+    printf("Digites os valores de acordo com a equado do segundo grau.\n\n");
 
-					return 0;
-}
+    printf("  A:");
+    scanf("%f", &a);
+    printf("\n  B:");
+    scanf("%f", &b);
+    printf("\n  C:");
+    scanf("%f", &c);
 
-float elevar(float base, int expo){
-	float resultante;
-	int contador=1;
-		if (base == 0){
-			
-				return 0;
-			
-			}else if((expo == 0) && (base != 0)){
-				
-				return 1;
-				
-					}else if (expo == 1){
-							return base;
+    delta = (b*b)-(4*a*c);
+    x1= (-b+raiz(delta, 2))/(2*a);
+    x2= (-b-raiz(delta, 2))/(2*a);
 
-					}else if (expo > 0){
-						resultante = base;
-						do {
-							resultante = resultante * base;
-							contador ++;
-							}while(contador < expo);
-							return resultante;
-					}else if (expo < 0){
-						return 1 / elevartest(base, (expo*(-1)));
-					}
-
-					return 0;
-}
-
-float raiz(float valor, int quanto){
-	float raiz = 0;
-	int y= quanto%2;
-
-	if (valor > 0){
-		do{
-		raiz+= VALOR_MINIMO;
-		}while(elevar(raiz, quanto) < valor);
-		return raiz;
-	} else if(valor < 0 && y==1){
-		do{
-			raiz+= VALOR_MINIMO;
-		}while(elevar(raiz, quanto) < valor);
-		return raiz;
-	}else {
-		printf("\nERRO, nao possui solucao!\n");
-	}
-		
+    printf("\e[H\e[2J");
+    printf(" As raizes da equacao A: %.2f  B: %.2f  C: %.2f  são.\n", a, b, c);
+    if(delta > 0){
+    printf("\n  X1: %f", x1);
+    printf("\n  X2: %f\n", x2);
+    printf("\n  Sendo Delta: %f\n", delta);
+     }else
+        printf("\nVazias, pois nao possuem solucoes no conjunto dos numeros reais!\n");
+    return 0;
 }
